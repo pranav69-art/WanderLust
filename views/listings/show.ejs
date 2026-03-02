@@ -1,0 +1,59 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row">
+        <div class="col-8 offset-3">
+           
+    <H3> Listing Details : <%= listing.title %></H3>
+     </div>
+    <div class="card col-6 offset-3 show-card" >
+         <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing image">
+  <div class="card-body">
+    <p class="card-text">
+        <br><%= listing.description %>
+        <br>Rs.<%= listing.price.toLocaleString("en-IN") %>/night
+        <br><i class="fa-solid fa-location-dot"></i><%= listing.location %>
+        <br><i class="fa-solid fa-earth-americas"></i><%= listing.country %>
+    </p>
+  </div>
+    </div>
+    <br />
+   
+    </div>
+      <div class="btns">
+    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 mb-5">Edit </a>
+    
+    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+        <button type="submit" class="btn deletebtn offset-5 mb-5">Delete </button>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4 ">
+    <div class="col col-6 offset-3">
+
+    <h3>Rate this Listing</h3>
+
+    
+<form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
+  
+  <div class="star-rating">
+    <input type="radio" name="rating" value="5" id="5"><label for="5">★</label>
+    <input type="radio" name="rating" value="4" id="4"><label for="4">★</label>
+    <input type="radio" name="rating" value="3" id="3"><label for="3">★</label>
+    <input type="radio" name="rating" value="2" id="2"><label for="2">★</label>
+    <input type="radio" name="rating" value="1" id="1"><label for="1">★</label>
+  </div>
+   <div class="mb-3 col-md-8">
+    <label for="comment" class="form-label"><b>Write a Review</b></label>
+    <textarea name="comment" placeholder="Write a review..." class="form-control w-100 h-25" required></textarea>
+   </div>
+   <div class="invalid-feedback">Please provide a review comment.</div>
+ 
+  <button type="submit" class="sumbit-btn mb-3">Submit Review</button>
+
+</form>
+</div>
+</div>
+<hr />
+
+
+<script src="/js/script.js"></script>
+</body>
+ 

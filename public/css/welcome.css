@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Hide default cursor to use our custom one */
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card */
+.container{
+    width: 200px;
+}
+.welcome-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6rem;
+    margin: 25rem;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    color: white;
+    max-width: 450px;
+    transform: translateY(0px);
+    transition: transform 0.3s ease;
+}
+
+.welcome-card:hover {
+    transform: translateY(-10px);
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+p { margin-bottom: 2rem; opacity: 0.8; line-height: 1.6; }
+
+/* Buttons */
+.btn-group { display: flex; gap: 20px; justify-content: center; }
+
+.btn {
+    text-decoration: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+.btn-signin { background: white; color: #e73c7e; }
+.btn-signup { background: transparent; color: white; }
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.btn-signup:hover {
+    background: white;
+    color: #23a6d5;
+}
+
+/* Custom Cursor Styling */
+.cursor {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.cursor-follower {
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 998;
+    transition: transform 0.1s ease-out;
+}
+
+/*chat-bot*/
+/* Container Positioning */
+.chat-c{
+    padding-right: 10%;
+    
+}
+
+
+#chat-wrapper {
+   
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    perspective: 1000px;
+}
+
+#chat-container {
+   
+    margin-left: 1.5rem;
+    margin-right: 1.2rem;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#chat-header {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    font-weight: bold;
+    color: white;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#chat-box {
+    height: 200px;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    font-size: 0.85rem;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+}
+
+/* Chat Bubbles Animation */
+.bot-msg {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 15px;
+    border-radius: 15px 15px 15px 0;
+    align-self: flex-start;
+    animation: popIn 0.3s ease-out;
+}
+
+/* Input Area */
+.input-group {
+    display: flex;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    gap: 10px;
+}
+
+#chat-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#chat-input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #23d5ab;
+    box-shadow: 0 0 15px rgba(35, 213, 171, 0.3);
+}
+
+#send-btn {
+    background: #23a6d5;
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+}
+
+#send-btn:hover {
+    background: #23d5ab;
+    transform: scale(1.1) rotate(-10deg);
+}
+
+/* Keyframes */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px) rotateX(-10deg); }
+    to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Allow the main page to scroll if content is long */
+        height: auto;
+        min-height: 100vh;
+        padding: 20px;
+        display: block; /* Switch from flex to block for easier stacking */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .welcome-card, #chat-wrapper {
+        width: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+        position: relative; /* Ensure they don't overlap */
+    }
+
+    #chat-container {
+        /* Set a fixed height for the chat on mobile so it doesn't expand forever */
+        height: 400px; 
+    }
+
+    #chat-box {
+        flex: 1; /* Takes up remaining space */
+        overflow-y: scroll; /* Forces internal scrolling */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Smaller text for mobile */
+    }
+}
+
+/* Specific fix for the 'Internal Scrolling' of the Chat Box */
+#chat-box {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+/* Chrome, Edge, and Safari scrollbar styling */
+#chat-box::-webkit-scrollbar {
+    width: 6px;
+}

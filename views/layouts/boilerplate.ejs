@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>WanderLust</title>
+</head>
+<link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script
+  async
+  crossorigin="anonymous"
+  data-clerk-publishable-key="<%= process.env.CLERK_PUBLISHABLE_KEY %>"
+  src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
+</script>
+<body>
+ <!-- Cookie Popup -->
+<div id="cookie-popup" class="cookie-popup">
+  <p>
+    🍪 This website is owned by <strong>Pranav Pratap</strong>.  
+    We use cookies to improve your browsing experience.
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-btn">Accept</button>
+    <button id="reject-btn">Reject</button>
+  </div>
+</div>
+
+<script>
+  const popup = document.getElementById("cookie-popup");
+  const acceptBtn = document.getElementById("accept-btn");
+  const rejectBtn = document.getElementById("reject-btn");
+
+  // Show popup only if no cookie exists
+  if (!document.cookie.includes("cookieConsent")) {
+    popup.style.display = "flex";
+  }
+
+  acceptBtn.addEventListener("click", () => {
+    document.cookie = "cookieConsent=accepted; max-age=" + 60*60*24*30;
+    popup.style.display = "none";
+  });
+
+  rejectBtn.addEventListener("click", () => {
+    document.cookie = "cookieConsent=rejected; max-age=" + 60*60*24*30;
+    popup.style.display = "none";
+  });
+</script>
+</div>
+   <%- include("../includes/navbar") %>
+    <div class="container">
+        <%- body %>
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+      <%- include("../includes/footer") %>
+      <script src="/js/script.js"></script>
+  </body>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Premium Portal</title>
+    <link rel="stylesheet" href="/css/welcome.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script
+  async
+  crossorigin="anonymous"
+  data-clerk-publishable-key="<%= process.env.CLERK_PUBLISHABLE_KEY %>"
+  src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
+</script>
+</head>
+<body>
+    
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h1>Welcome <br> to the website</h1>
+           <p> Find and list the best resorts around the world. Discover amazing places and experiences. </p>
+            
+            <div class="btn-group">
+                <a href="/listings" class="btn btn-signin">Welcome <i class="fa-solid fa-arrow-right"></i></a>
+               
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="chat-c">
+      <div id="chat-container">
+ <div id="chat-wrapper" class="fade-in">
+  <div id="chat-container">
+    <div id="chat-header">Resort Assistant</div>
+    <div id="chat-box">
+        <div class="bot-msg">Hello! Looking for a tropical getaway? 🌴</div>
+    </div>
+    <div class="input-group">
+      <input type="text" id="chat-input" placeholder="Ask about resorts..." />
+      <button id="send-btn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+      </button>
+    </div>
+  </div>
+</div>
+  </div>
+
+<script>
+async function sendMessage() {
+  const input = document.getElementById("chat-input");
+  const message = input.value;
+
+  if (!message) return;
+
+  const chatBox = document.getElementById("chat-box");
+  chatBox.innerHTML += "<p><b>You:</b> " + message + "</p>";
+
+  input.value = "";
+
+  const response = await fetch("/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message }),
+  });
+
+  const data = await response.json();
+
+  chatBox.innerHTML += "<p><b>Bot:</b> " + data.reply + "</p>";
+}
+</script>
+<script>
+    const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+const buttons = document.querySelectorAll('.btn');
+
+document.addEventListener('mousemove', (e) => {
+    // Basic movement
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    
+    // Smooth follower movement
+    follower.style.left = (e.clientX - 11) + 'px';
+    follower.style.top = (e.clientY - 11) + 'px';
+});
+
+// Click effect
+document.addEventListener('mousedown', () => {
+    follower.style.transform = 'scale(0.5)';
+});
+
+document.addEventListener('mouseup', () => {
+    follower.style.transform = 'scale(1)';
+});
+
+// Hover over buttons
+buttons.forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+        follower.style.transform = 'scale(2)';
+        follower.style.background = 'rgba(255,255,255,0.2)';
+    });
+    btn.addEventListener('mouseleave', () => {
+        follower.style.transform = 'scale(1)';
+        follower.style.background = 'transparent';
+    });
+});
+window.addEventListener('load', async function () {
+  await Clerk.load();
+
+  const signInBtn = document.getElementById('sign-in-btn');
+  const signUpBtn = document.getElementById('sign-up-btn');
+
+  // Open Sign In Modal
+  signInBtn.addEventListener('click', () => {
+    Clerk.openSignIn();
+  });
+
+  // Open Sign Up Modal
+  signUpBtn.addEventListener('click', () => {
+    Clerk.openSignUp();
+  });
+
+  // Optional: Check if user is already logged in
+  if (Clerk.user) {
+    console.log("User is logged in as " + Clerk.user.firstName);
+    // You could redirect them or change the "Welcome" text here
+  }
+});
+</script>
+
+
+    <script src="welcome.js"></script>
+</body>
+</html>
