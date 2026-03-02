@@ -1,7 +1,5 @@
 {
-  "engines": {
-    "node": "22.20.0"
-  },
+ 
 
   "name": "project-1",
   "version": "1.0.0",
