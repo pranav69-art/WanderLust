@@ -10,6 +10,10 @@ const reviewSchema = new schema({
 min : 1,
 max : 5,
 },
+    listing: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Listing"
+  },
 createdAt : {
     type : Date,
     default : Date.now(),
@@ -17,5 +21,6 @@ createdAt : {
 
 
 });
+
 
 module.exports = mongoose.model("Review" , reviewSchema);
