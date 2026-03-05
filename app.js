@@ -17,6 +17,7 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const { isLoggedIN } = require("./utils/middleware");
 const OpenAI = require("openai");
+const fileA = require("./listings/welcome.ejs")
 // Middleware
 app.use(express.json());
 
@@ -212,4 +213,11 @@ app.post("/chat", async (req, res) => {
     console.error(err);
     res.status(500).json({ reply: "Something went wrong." });
   }
+
 });
+
+function run() {
+   const fileA = require('./listings/wlecome.ejs');
+   fileA.create();
+}
+run();
