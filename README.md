@@ -103,8 +103,7 @@ nodemon app.js
 
 Open your browser and visit:
 
-http://localhost:3000
-📊 Example Listing Data
+https://wanderlust-dtsk.onrender.com/
 
 Each resort listing contains:
 
@@ -150,6 +149,9 @@ Pre-final year Engineering student interested in Full Stack Development and AI T
 
 GitHub:
 https://github.com/pranav69-art
+
+Website :
+https://wanderlust-dtsk.onrender.com/
 
 📜 License
 
