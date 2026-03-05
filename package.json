@@ -1,6 +1,6 @@
 {
  
-"start": "node app.js"
+"start": "node app.js",
   "name": "project-1",
   "version": "1.0.0",
   "description": "",
