@@ -1,11 +1,13 @@
 # WanderLust
 🏝️ Resort Listing Web Application
 
-A full-stack web application that allows users to explore, add, and manage resort listings from around the world. Users can view resort details such as description, images, price, location, and contact information. This project demonstrates CRUD operations, database integration, and responsive UI development.
+A full-stack web application that allows users to explore, add, and manage resort listings from around the world. Users can view resort details such as description, images, price, location, and contact information.
+
+The application includes secure user authentication using Clerk, allowing users to sign up, log in, and manage their own resort listings.
 
 🚀 Features
 
-🌍 View resort listings from different locations around the world
+🌍 Browse resorts from different locations worldwide
 
 ➕ Add new resort listings
 
@@ -15,11 +17,15 @@ A full-stack web application that allows users to explore, add, and manage resor
 
 🖼️ Display resort images
 
-📍 View resort location and contact information
+📍 Resort location and contact details
 
-💾 Store data using MongoDB database
+🔐 Secure authentication using Clerk
 
-📱 Responsive user interface
+👤 User signup and login system
+
+💾 Data storage using MongoDB
+
+📱 Responsive UI design
 
 🛠️ Tech Stack
 Frontend
@@ -30,7 +36,7 @@ CSS3
 
 JavaScript
 
-EJS (Embedded JavaScript Templates)
+EJS Templates
 
 Bootstrap
 
@@ -46,11 +52,15 @@ MongoDB
 
 Mongoose
 
+Authentication
+
+Clerk
+
 Tools
 
-Git & GitHub
+Git
 
-VS Code
+Visual Studio Code
 
 MongoDB Atlas
 
@@ -78,49 +88,62 @@ Resort-Listing-App
 ├── init
 │   └── data.js
 │
+├── middleware
+│   └── auth.js
+│
 ├── app.js
 ├── package.json
 └── README.md
+🔐 Authentication with Clerk
+
+This project integrates Clerk for user authentication.
+
+Features
+
+User Sign Up
+
+User Login
+
+Secure Sessions
+
+User Profile Management
+
+Protected Routes
+
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
 git clone https://github.com/yourusername/resort-listing-app.git
-2️⃣ Navigate to project folder
+2️⃣ Go to project folder
 cd resort-listing-app
 3️⃣ Install dependencies
 npm install
-4️⃣ Configure environment variables
+4️⃣ Create Environment Variables
 
-Create a .env file and add your MongoDB connection string.
+Create a .env file in the root folder.
 
-MONGO_URL=your_mongodb_atlas_connection_string
+MONGO_URL=your_mongodb_connection_string
+
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+
+You can obtain these keys from the Clerk dashboard.
+
 5️⃣ Start the server
 node app.js
 
-or (if using nodemon)
+or
 
 nodemon app.js
 🌐 Run the Application
 
-Open your browser and visit:
+Open your browser:
 
+http://localhost:5000
+
+Website :
 https://wanderlust-dtsk.onrender.com/
 
-Each resort listing contains:
-
-Title
-
-Description
-
-Image URL
-
-Price
-
-Location
-
-Contact Information
-
-Example:
-
+📊 Example Listing Data
 {
   "title": "Soneva Fushi Resort",
   "description": "Luxury eco-resort offering overwater villas.",
@@ -131,28 +154,31 @@ Example:
 }
 📸 Future Improvements
 
-⭐ User reviews and ratings
+⭐ User ratings and reviews
 
-🔐 User authentication and login system
+☁️ Image uploads with Cloud storage
 
-☁️ Cloud image upload (Cloudinary)
-
-📍 Map integration (Google Maps)
+📍 Map integration using Google Maps
 
 🔎 Search and filter resorts
+
+❤️ Wishlist / favorite resorts
+
+📅 Booking system
 
 👨‍💻 Author
 
 Pranav Pratap
 
-Pre-final year Engineering student interested in Full Stack Development and AI Technologies.
+Pre-Final Year Engineering Student
+Interested in Full Stack Development and AI Technologies
 
 GitHub:
 https://github.com/pranav69-art
-
-Website :
+Website : 
 https://wanderlust-dtsk.onrender.com/
 
 📜 License
+
 
 This project is open source and available under the MIT License.
